@@ -10,7 +10,7 @@ jobs:
   build:
     steps:
       - uses: tvrcgo/deploy-to-docker@v0.1
-        width:
+        with:
           registry: registry.cn-shenzhen.aliyuncs.com
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
