@@ -1,0 +1,27 @@
+
+name: 'Deploy to docker'
+description: 'Build app image and deploy to specific docker registry'
+
+inputs:
+  registry:
+    description: 'docker registry'
+    required: false
+    default: 'registry.cn-shenzhen.aliyuncs.com'
+  username:
+    description: 'docker username'
+    required: true
+  password:
+    description: 'docker password'
+    required: true
+  repository:
+    description: 'docker repository. format: username/repository'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    DOCKER_REGISTRY: ${{ inputs.registry }}
+    DOCKER_USER: ${{ inputs.username }}
+    DOCKER_PASS: ${{ inputs.password }}
+    DOCKER_REPO: ${{ inputs.repository }}
