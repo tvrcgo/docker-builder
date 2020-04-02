@@ -1,6 +1,9 @@
 
 name: 'Deploy to docker'
 description: 'Build app image and deploy to specific docker registry'
+branding:
+  icon: 'box'
+  color: 'green'
 
 inputs:
   registry:
