@@ -17,7 +17,7 @@ inputs:
     description: 'docker password'
     required: true
   repository:
-    description: 'docker repository. format: username/repository'
+    description: 'namespace and repository. format: namespace/repository'
     required: true
 
 runs:

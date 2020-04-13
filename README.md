@@ -18,11 +18,11 @@ jobs:
 
 ```
 
-- A Dockerfile is required in root directory.
+- A `Dockerfile` used to build image is required in root directory.
 
 ### Options
 
-- registry
-- username
-- password
-- repository
+- `registry`
+- `username`
+- `password`
+- `repository`

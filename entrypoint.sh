@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-TAG=dtd-$(date +"%Y%m%d%H%M%S")
+TAG=$GITHUB_REF-$(date +"%s")
 
 echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin $DOCKER_REGISTRY
 docker build . --tag $DOCKER_REGISTRY/$DOCKER_REPO:$TAG
