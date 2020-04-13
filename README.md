@@ -18,11 +18,11 @@ jobs:
 
 ```
 
-- A Dockerfile is required in the root directory.
+- A Dockerfile is required in root directory.
 
 ### Options
 
-- registry: docker registry host
-- username: docker username
-- password: docker password
-- repository: docker repository without tag
+- registry
+- username
+- password
+- repository
