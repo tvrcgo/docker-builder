@@ -7,18 +7,21 @@ branding:
 
 inputs:
   registry:
-    description: 'docker registry'
+    description: 'Docker registry'
     required: false
     default: 'registry.cn-shenzhen.aliyuncs.com'
   username:
-    description: 'docker username'
+    description: 'Docker username'
     required: true
   password:
-    description: 'docker password'
+    description: 'Docker password'
     required: true
   repository:
-    description: 'namespace and repository. format: namespace/repository'
+    description: 'Namespace and repository. format: namespace/repository'
     required: true
+  tag:
+    description: 'Image tag'
+    required: false
 
 runs:
   using: 'docker'
@@ -28,3 +31,4 @@ runs:
     DOCKER_USER: ${{ inputs.username }}
     DOCKER_PASS: ${{ inputs.password }}
     DOCKER_REPO: ${{ inputs.repository }}
+    DOCKER_TAG: ${{ inputs.tag }}

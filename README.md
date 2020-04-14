@@ -26,3 +26,4 @@ jobs:
 - `username`
 - `password`
 - `repository`
+- `tag`: Default format: `<ref>-<run_id>-<timestamp>`
