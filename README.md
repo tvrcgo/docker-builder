@@ -9,7 +9,7 @@ Build app image and deploy to specific docker registry.
 jobs:
   build:
     steps:
-      - uses: tvrcgo/deploy-to-docker@v0.2
+      - uses: tvrcgo/deploy-to-docker@v0.3.1
         with:
           registry: registry.cn-shenzhen.aliyuncs.com
           username: ${{ secrets.DOCKER_USERNAME }}
