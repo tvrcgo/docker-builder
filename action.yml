@@ -22,6 +22,9 @@ inputs:
   tag:
     description: 'Image tag'
     required: false
+  dockerfile:
+    description: 'Dockerfile path'
+    required: false
 
 runs:
   using: 'docker'
@@ -32,3 +35,4 @@ runs:
     DOCKER_PASS: ${{ inputs.password }}
     DOCKER_REPO: ${{ inputs.repository }}
     DOCKER_TAG: ${{ inputs.tag }}
+    DOCKER_FILE: ${{ inputs.dockerfile }}
