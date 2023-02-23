@@ -9,7 +9,7 @@ Build app image and deploy to specific docker registry.
 jobs:
   build:
     steps:
-      - uses: tvrcgo/deploy-to-docker@v0.3.1
+      - uses: tvrcgo/deploy-to-docker@master
         with:
           registry: registry.cn-shenzhen.aliyuncs.com
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -26,4 +26,6 @@ jobs:
 - `username`
 - `password`
 - `repository`
-- `tag`: Default format: `<ref>-<run_id>-<timestamp>`
+- `tag`
+- `context` Build context, default is '.'
+- `dockerfile` Dockerfile name, default is 'Dockerfile'

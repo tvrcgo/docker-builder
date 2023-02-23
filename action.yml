@@ -22,6 +22,9 @@ inputs:
   tag:
     description: 'Image tag'
     required: false
+  context:
+    description: 'Build context'
+    required: false
   dockerfile:
     description: 'Dockerfile path'
     required: false
@@ -35,4 +38,5 @@ runs:
     DOCKER_PASS: ${{ inputs.password }}
     DOCKER_REPO: ${{ inputs.repository }}
     DOCKER_TAG: ${{ inputs.tag }}
+    DOCKER_BUILD_CONTEXT: ${{ inputs.context }}
     DOCKER_FILE: ${{ inputs.dockerfile }}
