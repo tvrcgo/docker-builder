@@ -7,7 +7,7 @@ IFS=','
 read -ra tags <<< "$INPUT_TAGS"
 
 # build
-tag_args=$(for tag in "${tags[@]}"; do printf "%s " "--tag $INPUT_REGISTRY/$tag"; done)
+tag_args=$(for tag in "${tags[@]}"; do printf "%s " "--tag $INPUT_REGISTRY/$tag"; done | sed 's/ *$//g')
 docker buildx build --file $INPUT_DOCKERFILE --platform $INPUT_PLATFORMS $tag_args $INPUT_CONTEXT
 
 # push
