@@ -1,7 +1,7 @@
 
-# Deploy to docker
+# Docker builder
 
-Build app image and deploy to specific docker registry.
+Build docker image and push to specific registry.
 
 ### Usage
 
@@ -9,12 +9,11 @@ Build app image and deploy to specific docker registry.
 jobs:
   build:
     steps:
-      - uses: tvrcgo/deploy-to-docker@master
+      - uses: tvrcgo/docker-builder@master
         with:
-          registry: registry.cn-shenzhen.aliyuncs.com
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: tvrcgo/app-boilerplate
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          tags: tvrcgo/app:latest
 
 ```
 
@@ -22,10 +21,10 @@ jobs:
 
 ### Options
 
-- `registry`
 - `username`
 - `password`
-- `repository`
-- `tag`
+- `tags`
+- `registry` Default is 'docker.io'
 - `context` Build context, default is '.'
 - `dockerfile` Dockerfile name, default is 'Dockerfile'
+- `platforms` Default is 'linux/amd64,linux/arm64'

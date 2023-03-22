@@ -1,13 +1,16 @@
 #!/bin/sh -l
 
-DFT_TAG=${GITHUB_REF##*/}-${GITHUB_RUN_ID}-$(date +"%s")
-TAG=${DOCKER_TAG:-$DFT_TAG}
+# docker login
+echo "$INPUT_PASSWORD" | docker login -u "$INPUT_USERNAME" --password-stdin $INPUT_REGISTRY
 
-echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin $DOCKER_REGISTRY
-docker build --file ${DOCKER_FILE:-Dockerfile} --tag $DOCKER_REGISTRY/$DOCKER_REPO:$TAG --tag $DOCKER_REGISTRY/$DOCKER_REPO:latest ${DOCKER_CTX}
+IFS=','
+read -ra tags <<< "$INPUT_TAGS"
 
-docker push $DOCKER_REGISTRY/$DOCKER_REPO:latest
+# build
+tag_args=$(for tag in "${tags[@]}"; do printf "%s " "--tag $INPUT_REGISTRY/$tag"; done)
+docker buildx build --file $INPUT_DOCKERFILE --platform $INPUT_PLATFORMS $tag_args $INPUT_CONTEXT
 
-if [[ ! -z $DOCKER_TAG ]]; then
-  docker push $DOCKER_REGISTRY/$DOCKER_REPO:$TAG
-fi
+# push
+for tag in "${tags[@]}"; do
+  docker push $INPUT_REGISTRY/$tag
+done

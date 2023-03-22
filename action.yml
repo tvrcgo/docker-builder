@@ -1,27 +1,24 @@
 
-name: 'Deploy to docker'
-description: 'Build app image and deploy to specific docker registry'
+name: 'Docker builder'
+description: 'Build docker image and push to specific registry'
 branding:
   icon: 'box'
   color: 'green'
 
 inputs:
-  registry:
-    description: 'Docker registry'
-    required: false
-    default: 'registry.cn-shenzhen.aliyuncs.com'
   username:
     description: 'Docker username'
     required: true
   password:
     description: 'Docker password'
     required: true
-  repository:
-    description: 'Namespace and repository. format: namespace/repository'
+  tags:
+    description: 'Image tag, including repo path'
     required: true
-  tag:
-    description: 'Image tag'
+  registry:
+    description: 'Docker registry'
     required: false
+    default: 'docker.io'
   context:
     description: 'Build context'
     required: false
@@ -30,15 +27,11 @@ inputs:
     description: 'Dockerfile path'
     required: false
     default: 'Dockerfile'
+  platforms:
+    description: 'Target platforms'
+    required: false
+    default: 'linux/amd64,linux/arm64'
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  env:
-    DOCKER_REGISTRY: ${{ inputs.registry }}
-    DOCKER_USER: ${{ inputs.username }}
-    DOCKER_PASS: ${{ inputs.password }}
-    DOCKER_REPO: ${{ inputs.repository }}
-    DOCKER_TAG: ${{ inputs.tag }}
-    DOCKER_CTX: ${{ inputs.context }}
-    DOCKER_FILE: ${{ inputs.dockerfile }}

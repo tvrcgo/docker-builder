@@ -1,8 +1,6 @@
 
-FROM alpine:3.10
+FROM docker:latest
 
 COPY entrypoint.sh /entrypoint.sh
-
-RUN apk add --update docker-cli
 
 ENTRYPOINT ["/entrypoint.sh"]
