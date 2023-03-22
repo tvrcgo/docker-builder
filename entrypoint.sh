@@ -7,7 +7,7 @@ read -ra tags <<< "$INPUT_TAGS"
 echo "$INPUT_PASSWORD" | docker login -u "$INPUT_USERNAME" --password-stdin $INPUT_REGISTRY
 
 # build and push
-tag_args=$(for tag in "${tags[@]}"; do printf "%s " "-t $(echo "$tag" | xargs)"; done | xargs)
+tag_args=$(for tag in "${tags[@]}"; do printf "%s\t" "-t $(echo $tag | xargs)"; done | xargs)
 
 cd $INPUT_CONTEXT
 docker buildx create --use
