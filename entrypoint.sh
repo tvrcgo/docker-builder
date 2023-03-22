@@ -14,6 +14,6 @@ docker buildx create --use
 docker buildx build \
   --file $INPUT_DOCKERFILE \
   --platform $INPUT_PLATFORMS \
-  $tags \
+  --tag $tags \
   --push \
   .
