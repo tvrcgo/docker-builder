@@ -5,6 +5,7 @@ read -ra tags <<< "$INPUT_TAGS"
 
 # docker login
 echo "$INPUT_PASSWORD" | docker login -u "$INPUT_USERNAME" --password-stdin $INPUT_REGISTRY
+echo "$INPUT_CONTEXT $INPUT_TAGS $INPUT_PLATFORMS $INPUT_DOCKERFILE"
 
 # build and push
 tag_args=$(for tag in "${tags[@]}"; do printf "%s " "-t $tag"; done | sed 's/ *$//g')
