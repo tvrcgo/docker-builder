@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash
 
 # docker login
 echo "$INPUT_PASSWORD" | docker login -u "$INPUT_USERNAME" --password-stdin $INPUT_REGISTRY
