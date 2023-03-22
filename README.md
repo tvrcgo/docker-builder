@@ -24,7 +24,7 @@ jobs:
 - `username`
 - `password`
 - `tags`
-- `registry` Default is 'docker.io'
-- `context` Build context, default is '.'
-- `dockerfile` Dockerfile name, default is 'Dockerfile'
-- `platforms` Default is 'linux/amd64,linux/arm64'
+- `registry` Docker registry (default: 'docker.io')
+- `context` Build context (default: '.')
+- `dockerfile` Dockerfile name (default: 'Dockerfile')
+- `platforms` Target platforms (default: 'linux/amd64,linux/arm64')
