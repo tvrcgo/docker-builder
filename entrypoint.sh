@@ -11,4 +11,9 @@ tag_args=$(for tag in "${tags[@]}"; do printf "%s " "-t '${tag}'"; done | sed 's
 
 cd $INPUT_CONTEXT
 docker buildx create --use
-docker buildx build --file "$INPUT_DOCKERFILE" --platform "$INPUT_PLATFORMS" --tag "$INPUT_TAGS" --push .
+docker buildx build \
+  --file "$INPUT_DOCKERFILE" \
+  --platform "$INPUT_PLATFORMS" \
+  "$tag_args" \
+  --push \
+  .
