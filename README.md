@@ -1,7 +1,7 @@
 
 # Docker builder
 
-Build docker image and push to specific registry.
+Build and push docker image.
 
 ### Usage
 
@@ -17,8 +17,6 @@ jobs:
 
 ```
 
-- A `Dockerfile` used to build image is required in root directory.
-
 ### Options
 
 - `username`
@@ -26,5 +24,5 @@ jobs:
 - `tags`
 - `registry` Docker registry (default: 'docker.io')
 - `context` Build context (default: '.')
-- `dockerfile` Dockerfile name (default: 'Dockerfile')
+- `dockerfile` Dockerfile path (default: 'Dockerfile')
 - `platforms` Target platforms (default: 'linux/amd64,linux/arm64')
