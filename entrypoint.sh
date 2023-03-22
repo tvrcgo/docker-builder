@@ -12,7 +12,7 @@ for tag in "${tags[@]}"; do
 done
 
 # build and push
-tag_args=$(for tag in "${tags[@]}"; do printf "%s\t" "-t $(echo $tag | xargs)"; done | xargs)
+tag_args=$(for tag in "${tags[@]}"; do printf "%s\t" "--tag $(echo $tag | xargs)"; done | xargs)
 
 cd $INPUT_CONTEXT
 docker buildx create --use
