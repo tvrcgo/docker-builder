@@ -17,11 +17,11 @@ jobs:
 
 ```
 
-### Options
+### Inputs
 
-- `username`
-- `password`
-- `tags`
+- `username` Registry username
+- `password` Registry password
+- `tags` Repo tags
 - `registry` Docker registry (default: 'docker.io')
 - `context` Build context (default: '.')
 - `dockerfile` Dockerfile path (default: 'Dockerfile')
